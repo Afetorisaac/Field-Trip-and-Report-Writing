@@ -1,0 +1,61 @@
+sequenceDiagram
+    participant U as User
+    participant B as Browser
+    participant F as Flask Server
+    participant A as Auth Module
+    participant S as Simulation Engine
+    participant D as Database
+    
+    Note over U,D: User Registration & Login
+    U->>B: Access Landing Page
+    B->>F: GET /
+    F->>B: Render landing.html
+    U->>B: Click Register
+    B->>F: POST /register
+    F->>A: Validate Input
+    A->>D: Check if user exists
+    D-->>A: User not found
+    A->>D: Create new user
+    D-->>A: User created
+    A-->>F: Registration success
+    F->>B: Redirect to login
+    
+    Note over U,D: Authentication
+    U->>B: Enter credentials
+    B->>F: POST /login
+    F->>A: Authenticate user
+    A->>D: Query user credentials
+    D-->>A: Return user data
+    A-->>F: Auth success
+    F->>B: Set session cookie
+    B-->>U: Show dashboard
+    
+    Note over U,D: Take Simulation
+    U->>B: Start Simulation
+    B->>F: GET /simulate
+    F->>S: Request scenario
+    S->>D: Load scenario data
+    D-->>S: Return scenario
+    S-->>F: Scenario details
+    F->>B: Render simulate.html
+    B-->>U: Display scenario
+    
+    U->>B: Submit answer
+    B->>F: POST /simulate
+    F->>S: Evaluate response
+    S->>S: Calculate score
+    S->>D: Store result
+    D-->>S: Result saved
+    S-->>F: Feedback & score
+    F->>B: Show feedback
+    B-->>U: Display result
+    
+    Note over U,D: View Results (Admin)
+    U->>B: Access Admin Panel
+    B->>F: GET /admin
+    F->>A: Check admin role
+    A-->>F: Authorized
+    F->>D: Query all results
+    D-->>F: Return aggregated data
+    F->>B: Render admin.html
+    B-->>U: Show analytics
