@@ -1,0 +1,27 @@
+graph TD
+    subgraph "Data Sources"
+      FW[Firewall]
+      S1[Server 1]
+      S2[Server 2]
+    end
+
+    subgraph "Collectors"
+      FB[Filebeat / Beats]
+    end
+
+    subgraph "Processing &amp; Storage"
+      LS[Logstash]
+      ES[Elasticsearch Cluster]
+    end
+
+    subgraph "Presentation"
+      KB[Kibana Dashboard]
+    end
+
+    FW --&gt; FB
+    S1 --&gt; FB
+    S2 --&gt; FB
+    FB --&gt; LS
+    LS --&gt; ES
+    ES --&gt; KB
+    KB --&gt; Analyst[Administrator / Security Analyst]

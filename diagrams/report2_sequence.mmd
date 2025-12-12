@@ -1,0 +1,16 @@
+sequenceDiagram
+    participant Server
+    participant Filebeat as "Filebeat Agent"
+    participant Logstash as "Logstash"
+    participant ES as "Elasticsearch"
+    participant KB as "Kibana"
+    actor Analyst
+
+    Server-&gt;Filebeat: 1. Write log (e.g., auth failed)
+    Filebeat-&gt;Logstash: 2. Forward log
+    Logstash-&gt;Logstash: 3. Parse &amp; enrich
+    Logstash-&gt;ES: 4. Index document
+    Analyst-&gt;KB: 5. Query / view dashboards
+    KB-&gt;ES: 6. Query data
+    ES--&gt;KB: 7. Return results
+    KB--&gt;Analyst: 8. Display alerts &amp; visualizations
