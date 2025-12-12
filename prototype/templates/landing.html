@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Awareness - Phishing Simulation Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            padding: 50px;
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .warning-icon {
+            font-size: 5em;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            color: #dc3545;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+        
+        .message {
+            color: #333;
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        
+        .info-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: left;
+        }
+        
+        .info-box h3 {
+            color: #856404;
+            margin-bottom: 15px;
+        }
+        
+        .info-box ul {
+            list-style-position: inside;
+            color: #856404;
+        }
+        
+        .info-box li {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .success-box p {
+            color: #155724;
+            margin: 10px 0;
+        }
+        
+        .btn {
+            padding: 15px 35px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            background: #667eea;
+            color: white;
+            margin-top: 20px;
+        }
+        
+        .btn:hover {
+            background: #5568d3;
+            transform: scale(1.05);
+        }
+        
+        .campaign-id {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="warning-icon">⚠️</div>
+        
+        <h1>This Was a Phishing Simulation!</h1>
+        
+        <p class="message">
+            You've clicked on a simulated phishing link as part of our security awareness training program. 
+            <strong>No actual harm has been done</strong>, but this demonstrates how easy it is to fall victim 
+            to phishing attacks.
+        </p>
+        
+        <div class="success-box">
+            <p><strong>Good news:</strong> This was just a test to help you learn!</p>
+            <p>Your interaction has been logged for training purposes only.</p>
+        </div>
+        
+        <div class="info-box">
+            <h3>🎓 How to Spot Phishing Emails:</h3>
+            <ul>
+                <li><strong>Check the sender's email address</strong> - Look for misspellings or suspicious domains</li>
+                <li><strong>Hover over links</strong> before clicking to see the actual URL</li>
+                <li><strong>Look for urgency or threats</strong> - Phishers create false sense of urgency</li>
+                <li><strong>Check for poor grammar or spelling</strong> - Professional companies proofread their emails</li>
+                <li><strong>Be suspicious of unexpected attachments</strong> - Don't open files from unknown sources</li>
+                <li><strong>Verify requests independently</strong> - Contact the company directly using official channels</li>
+                <li><strong>When in doubt, don't click</strong> - Report suspicious emails to your IT department</li>
+            </ul>
+        </div>
+        
+        <div class="info-box" style="background: #d1ecf1; border-color: #0c5460;">
+            <h3 style="color: #0c5460;">📚 Next Steps:</h3>
+            <ul style="color: #0c5460;">
+                <li>Complete the security awareness training course</li>
+                <li>Learn more about common phishing techniques</li>
+                <li>Share this knowledge with your colleagues</li>
+                <li>Report any suspicious emails you receive</li>
+            </ul>
+        </div>
+        
+        <a href="/" class="btn">Return to Training Portal</a>
+        
+        <p class="campaign-id">Campaign ID: {{ campaign_id }}</p>
+    </div>
+</body>
+</html>

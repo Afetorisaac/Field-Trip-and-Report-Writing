@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Campaign - Phishing Simulation Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+        }
+        
+        .navbar {
+            background: #667eea;
+            color: white;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar h1 {
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        h2 {
+            color: #333;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+        }
+        
+        input[type="text"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            font-family: inherit;
+        }
+        
+        input[type="text"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .template-preview {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .template-preview h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .template-preview p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #5568d3;
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>📧 Create Phishing Campaign</h1>
+    </div>
+    
+    <div class="container">
+        <div class="card">
+            <h2>Campaign Configuration</h2>
+            
+            <form method="POST" action="/simulate">
+                <div class="form-group">
+                    <label for="campaign_name">Campaign Name *</label>
+                    <input type="text" id="campaign_name" name="campaign_name" 
+                           placeholder="e.g., Q4 Security Awareness Test" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="template">Email Template *</label>
+                    <select id="template" name="template" required>
+                        <option value="">-- Select a template --</option>
+                        <option value="password_reset">Password Reset Request</option>
+                        <option value="account_verification">Account Verification</option>
+                        <option value="urgent_action">Urgent Action Required</option>
+                        <option value="shipping_notification">Shipping Notification</option>
+                        <option value="invoice">Invoice Payment</option>
+                    </select>
+                </div>
+                
+                <div class="template-preview" id="preview" style="display: none;">
+                    <h4>Template Preview</h4>
+                    <p id="preview-text"></p>
+                </div>
+                
+                <div class="button-group">
+                    <button type="submit" class="btn btn-primary">Launch Campaign</button>
+                    <a href="/admin" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        const templates = {
+            'password_reset': 'Your password will expire soon. Click here to reset your password and maintain access to your account.',
+            'account_verification': 'Your account requires verification. Please click the link below to verify your identity.',
+            'urgent_action': 'URGENT: Suspicious activity detected on your account. Immediate action required to secure your account.',
+            'shipping_notification': 'Your package is ready for delivery. Click to view tracking information and delivery schedule.',
+            'invoice': 'Invoice #12345 is overdue. Please review and submit payment to avoid service interruption.'
+        };
+        
+        document.getElementById('template').addEventListener('change', function() {
+            const preview = document.getElementById('preview');
+            const previewText = document.getElementById('preview-text');
+            
+            if (this.value && templates[this.value]) {
+                preview.style.display = 'block';
+                previewText.textContent = templates[this.value];
+            } else {
+                preview.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
