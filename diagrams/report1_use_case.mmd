@@ -1,0 +1,59 @@
+graph LR
+    subgraph Actors
+        U[User/Learner]
+        A[Administrator]
+        S[System]
+    end
+    
+    subgraph "User Use Cases"
+        UC1[Register Account]
+        UC2[Login]
+        UC3[View Dashboard]
+        UC4[Take Simulation]
+        UC5[View Results]
+        UC6[Track Progress]
+        UC7[Logout]
+    end
+    
+    subgraph "Admin Use Cases"
+        UC8[View All Users]
+        UC9[Monitor Performance]
+        UC10[Generate Reports]
+        UC11[Configure Scenarios]
+        UC12[Manage Users]
+    end
+    
+    subgraph "System Use Cases"
+        UC13[Validate Credentials]
+        UC14[Store Results]
+        UC15[Calculate Metrics]
+        UC16[Send Notifications]
+        UC17[Initialize Database]
+    end
+    
+    U --> UC1
+    U --> UC2
+    U --> UC3
+    U --> UC4
+    U --> UC5
+    U --> UC6
+    U --> UC7
+    
+    A --> UC2
+    A --> UC8
+    A --> UC9
+    A --> UC10
+    A --> UC11
+    A --> UC12
+    
+    UC2 --> UC13
+    UC4 --> UC14
+    UC5 --> UC15
+    UC9 --> UC15
+    UC10 --> UC15
+    UC11 --> UC16
+    UC1 --> UC17
+    
+    style U fill:#ffd4d4
+    style A fill:#d4e7ff
+    style S fill:#d4ffd4
