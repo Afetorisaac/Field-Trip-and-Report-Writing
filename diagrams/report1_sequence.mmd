@@ -1,0 +1,15 @@
+sequenceDiagram
+  actor Admin
+  participant UI as "Web UI"
+  participant Server as "API Server"
+  participant DB as "Database"
+  participant Email as "Email Service"
+  actor User
+  Admin->>UI: Configure & launch campaign
+  UI->>Server: POST /api/campaigns
+  Server->>DB: Get target users
+  Server->>Email: Queue emails
+  Email-->>User: Deliver simulated phishing
+  User->>Server: Click tracking endpoint
+  Server->>DB: Log click event
+  Server-->>User: Redirect to landing page

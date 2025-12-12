@@ -1,0 +1,6 @@
+graph TD
+  UI[React Front-End] --> API[Django API Server]
+  API --> DB[(PostgreSQL)]
+  API --> S3[(File Storage)]
+  Admin[Administrator] --> API
+  User[User/Trainee] --> UI
